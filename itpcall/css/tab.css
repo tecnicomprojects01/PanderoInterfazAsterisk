@@ -1,0 +1,189 @@
+#main {
+	border: 1px solid #666;
+	clear: both;
+	background: #FFF3B3;
+	padding-top: 2em;
+}
+
+#contents {
+	padding: 1.5em;
+	background: #FFFDF3;
+	min-height: 300px;
+}
+
+#header {
+	position: relative;
+	/*height: 2.5em;*/
+	/*width: 65em;  a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+	width: 98.2%;
+	background-color: #FFF3B3;
+	margin-bottom: 25px;
+	/*para ayudar al menu js*/
+	font: 12px Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-align: right;
+	padding: 0.8em 1em;
+	border-bottom: 3px solid #9cc;
+}
+/*para ayudar al menu js*/
+#header a{
+	text-decoration: none;
+	color: #06C;
+}
+#header a:hover{
+	text-decoration: none;
+	color: #000;
+}
+/*final */
+
+#header ul#primary {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: -1px;
+	/*width: 65em;  a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+	width: 100%;
+	font-size: 12px;
+}
+
+#header ul#primary li  {
+	display: inline;
+	list-style: none;
+}
+
+#header ul#primary a,#header ul#primary span,#header ul#primary a.current {
+	width: 8em;
+	display: block;
+	float: left;
+	padding: 4px 0;
+	margin: 1px 2px 0 0;
+	text-align: center;
+	font-family: tahoma, verdana, sans-serif;
+	font-size: 1em;
+	text-decoration: none;
+	color: #333;
+}
+
+#header ul#primary span,#header ul#primary a.current,#header ul#primary a.current:hover {
+	border: 1px solid #666;
+	border-bottom: none;
+	background: #FFF3B3;
+	padding-bottom: 6px;
+	margin-top: 0;
+}
+
+#header ul#primary a {
+	background: #FFFAE1;
+	border: 1px solid #AAA;
+	border-bottom: none;
+}
+
+#header ul#primary a:hover {
+	margin-top: 0;
+	border-color: #666;
+	background: #FFF7CD;
+	padding-bottom: 5px;
+}
+
+#header ul#secondary {
+	position: absolute;
+	/*margin: 0;
+	padding: 0;*/
+	margin: 3px 0;
+	padding: 5px 0;
+	/*bottom: -1.4em;*/
+	bottom: -2.3em;
+	left: 1px;
+	/*width: 75em;  a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+	width: 100%;
+	background-color: #FFF3B3;
+	border-top: 1px solid #000;
+	height: 14px;
+}
+#header ul#secondary .cont-second{
+	display: block;
+	background-color: #FFF3B3;
+}
+#header ul#secondary li a,#header ul#secondary li span {
+	width: auto;
+	display: block;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+	text-align: auto;
+	border: none;
+	border-right: 1px dotted #AAA;
+	background: none;
+
+}
+
+#header ul#secondary li a {
+	color: #06C;
+	text-decoration: underline;
+}
+
+#header ul#secondary li a:hover {
+	color: #333;
+	background: transparent;
+	padding: 0 10px;
+	border: none;
+	border-right: 1px dotted #AAA;
+}
+
+#header ul#secondary li a:active {
+	color: #000;
+	background: transparent;
+}
+
+#header ul#secondary li:last-child a { border: none; }
+
+/*====================================*/
+
+#header ul#tercer {
+	position: absolute;
+	/*margin: 0;
+	padding: 0;*/
+	margin: 6px 0;
+	padding: 5px 0;
+	/*bottom: -1.4em;*/
+	bottom: -2.3em;
+	left: 1px;
+	/*width: 75em;  a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+	width: 100%;
+	background-color: #FFF3B3;
+	border-top: 1px solid #000;
+	height: 14px;
+}
+#header ul#tercer .cont-second{
+	display: block;
+	background-color: #FFF3B3;
+}
+#header ul#tercer li a,#header ul#tercer li span {
+	width: auto;
+	display: block;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+	text-align: auto;
+	border: none;
+	border-right: 1px dotted #AAA;
+	background: none;
+
+}
+
+#header ul#tercer li a {
+	color: #06C;
+	text-decoration: underline;
+}
+
+#header ul#tercer li a:hover {
+	color: #333;
+	background: transparent;
+	padding: 0 10px;
+	border: none;
+	border-right: 1px dotted #AAA;
+}
+
+#header ul#tercer li a:active {
+	color: #000;
+	background: transparent;
+}

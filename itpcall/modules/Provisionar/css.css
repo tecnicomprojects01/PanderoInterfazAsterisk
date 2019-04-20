@@ -1,0 +1,23 @@
+#left{
+text-align: left;
+width: 320px;
+padding:0.5em;
+margin: 1em 0 1em 4em;
+//background-color: #CCCCCC;
+//margin: auto;
+border-bottom: 1px inset;
+border:2px inset;
+} 
+
+#contenedor{
+position: absolute;
+//padding:0.5em;
+//margin: 1em 0 1em 4em;
+  top:  140px; 
+  left: 550px;
+}
+
+#table_cab{
+background-color: #FF9900;
+
+}  

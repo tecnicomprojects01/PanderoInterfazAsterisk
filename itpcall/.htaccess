@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteBase /itpcall/
+AddType text/x-component .htc
+
+RewriteCond $1 !^(index\.php|modules|css|extras|images|img|js|librerias|style\.css|login\.php|error\.php|logout\.php|monitor\.php)
+RewriteRule ^(.*)/(.*)/(.*)$ index.php?module=$1&controller=$2&$3 [L]
+
+RewriteCond $1 !^(index\.php|modules|css|extras|images|img|js|librerias|style\.css|login\.php|error\.php|logout\.php|monitor\.php)
+RewriteRule ^(.*)/(.*)/$ index.php?module=$1&controller=$2 [L]
+
+RewriteCond $1 !^(index\.php|modules|css|extras|images|img|js|librerias|style\.css|login\.php|error\.php|logout\.php|monitor\.php)
+RewriteRule ^(.*)/(.*)$ index.php?module=$1&controller=$2 [L]

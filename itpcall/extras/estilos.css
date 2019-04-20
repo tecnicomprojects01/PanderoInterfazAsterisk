@@ -1,0 +1,84 @@
+/* level 0 inner */
+
+.m0l0iout {
+font: 12px Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+text-decoration: none;
+padding: 4px;
+color: #707070;
+        }
+	
+	.m0l0iover {
+	font: 12px Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	padding: 4px;
+	color: #E2144A;
+	    }
+	    
+	    /* level 0 outer */
+	    .m0l0oout {
+	    text-decoration : none;
+	    border : 1px solid #cccccc;
+	    background: #ffffff;
+		    }
+		    
+		    .m0l0oover {
+		    text-decoration : none;
+		    border : 1px solid #cccccc;
+		    background: #f9f9f9;
+			    }
+			    
+			    /* level 1 inner */
+			    .m0l1iout {
+			    font: 12px Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+			    text-decoration: none;
+			    padding: 4px;
+			    color: #000000;
+				}
+				
+				.m0l1iover {
+				font: bold 12px Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+				text-decoration : none;
+				padding: 4px;
+				color: #000000;
+				        }
+							    
+					/* level 1 outer */
+					.m0l1oout {
+					text-decoration : none;
+					border : 1px solid #cccccc;
+					background: #ffffff;
+					filter: alpha(opacity=85);
+					    }
+					    
+					    .m0l1oover {
+					    text-decoration : none;
+					    border : 1px solid #cccccc;
+					    background: #f9f9f9;
+						    }
+						    /*
+						    td {
+						    font: 12px Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+						    text-decoration: none;
+						    padding: 4px;
+						    color: black;
+						    text-align : center;
+							    }	    
+								    
+							    tr {
+							    font: 12px Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+							    text-decoration: none;
+							    padding: 4px;
+							    color: black;
+							    text-align : center;
+								    }	    
+								    
+								    H1 {
+								    font-size : 26pt;
+								    font-family : verdana,arial;
+								    text-decoration : underline;
+								    text-align : center;
+								    text-color : white;
+								    background-color : #6677AA;
+								    ;background-color : #0077AA;
+								    }	    															    }
+*/

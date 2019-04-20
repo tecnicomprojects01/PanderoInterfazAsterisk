@@ -1,0 +1,128 @@
+<?Php 
+	//include_once("conexion/Conexion.php");
+include_once("include/function/function.php");
+
+       $cn = mysql_connect('localhost','root','itperu321x');
+
+	$pais = "";
+
+		$pais = "espania";
+		mysql_select_db('asterisk',$cn);
+   
+    //echo $pais;
+
+    $objFunciones = new CFunction();
+
+$where = "";
+$desde = date("Y-m-d");
+$hasta = date("Y-m-d");
+$tdesde = "00:00:01";
+$thasta = "23:59:59";
+$callsense = "%%";
+$anexo = "%%";
+$numero = "%%";
+$estado = "%%";
+
+
+if(!empty($_REQUEST['desde'])){
+	$desde = $objFunciones->formatDateMysql($_REQUEST['desde'],1);
+}
+
+if(!empty($_REQUEST['hasta'])){
+	$hasta = $objFunciones->formatDateMysql($_REQUEST['hasta'],1);
+}
+
+if(!empty($_REQUEST['tdesde'])){
+	$tdesde = $_REQUEST['tdesde'];
+}
+
+if(!empty($_REQUEST['thasta'])){
+	$thasta = $_REQUEST['thasta'];
+}
+
+$where .= " where recordduration > 0 and recorddatetime between '".$desde." ".$tdesde."' and '".$hasta." ".$thasta."' and ";
+
+if(!empty($_REQUEST['anexo'])){
+	$cola = ($_REQUEST['anexo']==0 ? "%%" : $_REQUEST['anexo']);
+	$where .= " recordagent like '%".$_REQUEST['anexo']."%' and ";
+}
+
+/*if(!empty($_REQUEST['numero'])){
+	$agente = ($_REQUEST['numero']==0 ? "%%" : $_REQUEST['numero']);
+	$where .= " recordexten like '%".$_REQUEST['numero']."%' and ";
+}*/
+
+if(!empty($_REQUEST['numero'])){
+	$agente = ($_REQUEST['numero']==0 ? "%%" : $_REQUEST['numero']);
+	if(strstr($_REQUEST['numero'],',')){
+		$cadnumero = "";
+		$arrnumero = explode(",",$_REQUEST['numero']);		
+		for($i=0;$i<count($arrnumero);$i++){
+			$cadnumero .= trim($arrnumero[$i])."|";	
+		}
+		$cadnumero = substr($cadnumero,0,strlen($cadnumero)-1);		
+		$where .= " recordexten REGEXP '".$cadnumero."' and ";
+	}else{
+		$where .= " recordexten like '%".trim($_REQUEST['numero'])."%' and ";
+	}
+}
+
+
+if(!empty($_REQUEST['chkent']) || !empty($_REQUEST['chksal'])){		
+	if($_REQUEST['chkent']==0 && $_REQUEST['chksal']==0){ $where .= " recordsource = '' and "; }
+	if($_REQUEST['chkent']==1 && $_REQUEST['chksal']==1){ $where .= " recordsource like '%%' and "; }
+	if($_REQUEST['chkent']==1 && $_REQUEST['chksal']==0){ $where .= " recordsource = 'IN' and "; }
+	if($_REQUEST['chkent']==0 && $_REQUEST['chksal']==1){ $where .= " recordsource = 'OUT' and "; }
+}else{
+	$where .= " recordsource = 'IN' and ";
+}
+
+if(!empty($_REQUEST['estado'])){
+	$estado = ($_REQUEST['estado']=="" ? "%%" : $_REQUEST['estado']);
+	$where .= " recordstatus like '%".($_REQUEST['estado']=="" ? "" : $_REQUEST['estado'])."%' and ";
+}
+
+
+//echo "Agente seleccionado => ".$_POST['agente'];
+
+//$where = " where agent.iid_agent like '".$agente."' and date(event_log.ddate_eventlog) between date('".$desde."') and date('".$hasta."')";
+//$where = " where queue.iid_queue like '".$cola."' AND agent.iid_agent like '".$agente."' and event_log.vcallsense_eventlog like '".$callsense."' and event_log.vstatus_eventlog like '".$estado."' and date(event_log.ddate_eventlog) between '".$desde." ".$tdesde."' and '".$hasta." ".$thasta."'";
+
+$where = substr($where, 0,strlen($where)-4);
+
+$cSql = "select *,MID(recordexten,2) recordexten2 from record_call ".$where." limit 1000 ";
+
+echo $cSql;
+
+/*echo "<br>###############################################</br>";
+echo "<br>Mensaje temporal de prueba</br>";
+echo "<br>".$cSql."</br>";
+echo "<br>###############################################</br>";*/
+
+/*$cSql = "select '' as vnombre_queue,
+					'' as vdescription_queue,
+					'' as vfirstname_agent,
+					'' as vlastname_agent,	
+					'' as ddate_eventlog,
+					'' as dtime_eventlog,	
+					'' as vuser_eventlog,
+					'' as vexten_eventlog,
+					event_log.vfilename_eventlog,
+					'' as vorigin_eventlog,
+					'' as vdestination_eventlog,
+					'' as duraciontotal,
+					'' as duracion
+
+		from 	event_log limit 10 "; */
+
+$rsGrabacionLlamadaAgente = mysql_query($cSql);
+
+
+function timeformat($time){
+        $horas = floor($time/3600);
+        $minutos = floor(($time-($horas*3600))/60);
+        $segundos = $time-($horas*3600)-($minutos*60);
+        return $horas.'h:'.$minutos.'m:'.$segundos.'s';
+}
+
+?>

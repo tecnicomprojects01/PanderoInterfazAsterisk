@@ -1,0 +1,150 @@
+<?Php include_once('datos.llamadas.grabadas.lista.php') ?>
+<table class="lvt small" width="100%" cellspacing="1" cellpadding="3" border="0">
+							<tbody>
+								<tr>
+									<td class="lvtCol" width='5%'>
+										<input id="chk0" type="checkbox" onclick="checktodos();" name="chk0">
+									</td>
+									<td class="lvtCol" width='10%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lead_no&start=&sorder=ASC");" href="javascript:;">Number</a>
+									</td>
+									<td class="lvtCol" width='10%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lastname&start=&sorder=ASC");" href="javascript:;">Agent</a>
+									</td>
+									<td class="lvtCol" width='10%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lastname&start=&sorder=ASC");" href="javascript:;">Date</a>
+									</td>
+									<td class="lvtCol" width='10%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lastname&start=&sorder=ASC");" href="javascript:;">Time</a>
+									</td>
+									<td class="lvtCol" width='10%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lastname&start=&sorder=ASC");" href="javascript:;">Duration</a>
+									</td>
+									<td class="lvtCol" width='10%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lastname&start=&sorder=ASC");" href="javascript:;">Status</a>
+									</td>
+									<td class="lvtCol" width='10%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lastname&start=&sorder=ASC");" href="javascript:;">Origin</a>
+									</td>
+									<td class="lvtCol" width='20%'>
+										<a class="listFormHeaderLinks" onclick="getListViewEntries_js("Leads","parenttab=Marketing&foldername=Default&order_by=lastname&start=&sorder=ASC");" href="javascript:;">File</a>
+									</td>
+									<td class="lvtCol" width='5%'>Action</td>
+									</tr>
+									<tr>
+										<td id="linkForSelectAll" class="linkForSelectAll" colspan="15" style="display:none;">
+											<span id="selectAllRec" class="selectall" onclick="toggleSelectAll_Records('Leads',true,'selected_id')" style="display:inline;">
+												Select All
+											<span id="count"> </span>
+												records in Leads
+											</span>
+											<span id="deSelectAllRec" class="selectall" onclick="toggleSelectAll_Records('Leads',false,'selected_id')" style="display:none;">Deselect all Leads</span>
+										</td>
+									</tr>
+
+									<?Php 
+									$x=1;	
+									while($flGrabacionLlamadaAgente=mysql_fetch_array($rsGrabacionLlamadaAgente)){ ?>
+									<?Php 
+										$carpetaRaiz = "";
+										$carpetaCallSense = "";
+										if($flGrabacionLlamadaAgente['recorddate'] != date('Y-m-d')){											
+											$carpetaRaiz = "telefonica/";											
+										}
+										
+										if($flGrabacionLlamadaAgente['recordsource'] == 'IN'){
+											$carpetaCallSense = "in/";			
+										}else if($flGrabacionLlamadaAgente['recordsource'] == 'OUT'){
+											$carpetaCallSense = "out/";
+										}
+
+										$anio = substr($flGrabacionLlamadaAgente['recorddate'],0,4)."/";
+										$mes = substr($flGrabacionLlamadaAgente['recorddate'],5,2)."/";
+										$dia = substr($flGrabacionLlamadaAgente['recorddate'],8,2)."/";
+										
+										if($flGrabacionLlamadaAgente['recorddate'] != date('Y-m-d')){											
+											$path3 = "../".$carpetaRaiz.$pais."/".$carpetaCallSense.$anio.$mes.$dia.$flGrabacionLlamadaAgente['recordfile'];										
+										}else{
+											$path3 = "../".$carpetaRaiz.$pais."/".$carpetaCallSense.$flGrabacionLlamadaAgente['recordfile'];
+										}
+										
+										
+										$directorio = ($flGrabacionLlamadaAgente['recorddate'] == date("Y-m-d") ? "monitor1" : "monitor");
+										$subdirectorio = ($flGrabacionLlamadaAgente['recordsource'] == "IN" ? "IN" : "OUT");
+										$path = "../".$directorio."/".$subdirectorio."/".$flGrabacionLlamadaAgente['recordfile'];
+										$path2 = "/var/www/html/".$directorio."/".$subdirectorio."/".$flGrabacionLlamadaAgente['recordfile'];
+
+										
+
+									?>	
+									<tr id="row_2" class="lvtColData" bgcolor="white" onmouseout="this.className='lvtColData'" onmouseover="this.className='lvtColDataHover'">
+										<td width="2%">
+											<input id="chk<?Php echo $x; ?>" type="checkbox" onclick="check_object(this)" value="<?Php echo $path3; ?>" name="chk<?Php echo $x; ?>">
+										</td>
+										<td>
+											<?=$flGrabacionLlamadaAgente['origen'];  ?>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>
+										<td>
+											<a title="Leads" href="#"><?=$flGrabacionLlamadaAgente['destino'];  ?></a>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>
+
+										<td>
+											<?=$flGrabacionLlamadaAgente['recorddate'];  ?>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>
+
+										<td>
+											<a title="Leads" href="#"><?=$flGrabacionLlamadaAgente['recordtime'];  ?></a>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>
+
+										<td>
+											<?=timeformat($flGrabacionLlamadaAgente['billsec']);  ?>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>
+
+										<td>
+											<a title="Leads" href="#"><?=$flGrabacionLlamadaAgente['event'];  ?></a>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>
+
+										<td>
+											<a title="Leads" href="#"><?=$flGrabacionLlamadaAgente['queue'];  ?></a>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>
+
+
+
+										<td>											
+											<a title="Leads" href="#"><?Php 
+											$file = $path;
+											echo $flGrabacionLlamadaAgente['recordfile'];  ?></a>
+											<span style="display:none;" vtmodule="Leads" vtfieldname="lead_no" vtrecordid="2" type="vtlib_metainfo"></span>
+										</td>										
+										
+										</td>										
+										<td>										
+											<a href="#"  onclick="descarga_audio('<?Php echo $flGrabacionLlamadaAgente['recordfile']; ?>','<?Php echo $flGrabacionLlamadaAgente['recorddate']; ?>','<?Php echo $pais; ?>','<?Php echo $flGrabacionLlamadaAgente['recordsource']; ?>');">
+											<img src="themes/images/arrow_down.png" width='13px'></a>
+											|
+											<a href="javascript:popup('<?Php echo $flGrabacionLlamadaAgente['recordfile']; ?>','<?Php echo $flGrabacionLlamadaAgente['recorddate']; ?>','<?Php echo $pais; ?>','<?Php echo $flGrabacionLlamadaAgente['recordsource']; ?>',320,200)"><img src="themes/images/small_right.gif" width='13px'></a>
+																							
+										</td>										
+									</tr>
+									<?Php $x++; } ?>		
+									<input id='totalgrab' name='totalgrab' type='hidden' value='<?Php echo $x; ?>'>
+									
+
+									
+
+								</tbody>
+							</table>
+
+
+
+
+<a href="downloadExcel.php?sql=<?Php echo $sExcel;?>" target='_parent' ><input class="crmbutton small delete" type="button"   value="DownloadNew"></a>
+
+

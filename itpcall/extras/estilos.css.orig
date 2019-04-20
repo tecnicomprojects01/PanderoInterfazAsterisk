@@ -1,0 +1,29 @@
+P {
+font-size : 12pt;
+font-family : arial,helvetica;
+font-weight : normal;
+}
+H1 {
+font-size : 26pt;
+font-family : verdana,arial;
+text-decoration : underline;
+text-align : center;
+text-color : white;
+background-color : #6677AA;
+#background-color : #0077AA;
+}
+TD {
+font-size : 11pt;
+font-family : verdana,arial;
+text-align : center;
+background-color : white;
+}
+BODY {
+background-color : #6677AA;
+font-family : arial;
+color : black;
+}
+.hideable { 
+position: relative; 
+visibility: visible; 
+}

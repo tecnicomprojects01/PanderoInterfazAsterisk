@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Asterisk - Administracion</title>
+<link rel=STYLESHEET type=text/css href=extras/menu.css>
+</head>
+<body>
+<script language="JavaScript" src="extras/menu.js"></script>
+<script language="JavaScript" src="extras/menu_items.js"></script>
+<script language="JavaScript" src="extras/menu_tpl.js"></script>
+<script language="JavaScript">
+	<!--//
+	new menu (MENU_ITEMS, MENU_TPL);
+	//-->
+</script>
+<center><B>Consola de Configuracion Asterisk</B></center><br><br>
+<!--<center><table width=99% height=80% border =1>
+<tr><td>
+  <center><!--<table border=0> 
+    <tr><td><center><h2><img src=extras/minsa1.jpg><br><br>Asterisk<br>Interfaz Administrativa</h2><br><img src=extras/logo_minsa.png1 width=100></td><tr>
+  </table></center>    
+</td></tr>
+</table></center>-->
+<!--<h5 align=right><I>Powered by www.xiencias.com</I></h5>-->
+</body>
+</html>
